@@ -80,7 +80,8 @@ return [
         'admins'=> [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
-        ]
+        ],
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*

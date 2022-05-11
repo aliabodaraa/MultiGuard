@@ -7,11 +7,13 @@ Route::prefix("user")->name("user.")->group(function(){
         Route::view('/login','dashboard.user.login')->name('login');
         Route::post('/check',[UserController::class,'check'])->name('check');
         Route::view('/register','dashboard.user.register')->name('register');
+        Route::view('/hello','dashboard.user.hello')->name('hello');
         Route::post('/create',[UserController::class,'create'])->name('create');
     });
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
         Route::view('/home','dashboard.user.home')->name('home');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
+        Route::view('/info','dashboard.user.info')->name('info');
     });
 });
 

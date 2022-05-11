@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Promise\Create;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,20 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('root');
+});
 Route::get('/index',[AdminController::class,'index'])->name('index');
-Auth::routes();
 
+//Prevent backtrack to login page after loggedout and move to welome page, make backtrack to thedash
+Route::middleware(['middleware'=>'PreventBackHistory'])->group(function(){
+    Auth::routes();
+});
+
+// Route::get('/user/home',function(){
+//  return view('auth.login');
+// });
+// Route::middleware(['AccessToHome'])->group(function(){
+//     Route::view('user/home','dashboard.user.home')->name('user.home');
+//     Route::view('admin/home','dashboard.admin.home')->name('admin.home');
+// });
 
 ?>

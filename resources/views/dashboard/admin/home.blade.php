@@ -17,6 +17,9 @@
     <div class="card">
         <h5 class="card-header">Admin Home</h5>
         <div class="card-body">
+            {{-- @role('admin')
+            <a href="/admin/users/1/edit">Edit</a>;
+            @endrole --}}
           <h5 class="card-title"><b>Name :</b>{{auth()->guard('admin')->user()->name}}</h5>
           <h5 class="card-title"><b>Email :</b>{{Auth::guard('admin')->user()->email}}</h5>
           <h5 class="card-title"><b>Phone :</b>{{auth()->guard('admin')->user()->phone}}</h5>

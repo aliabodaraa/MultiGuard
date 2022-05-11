@@ -12,6 +12,7 @@ class AdminController extends Controller
         dd(parent::getC());
         return view('admin.home');
     }
+
     function check(Request $request){
         $request->validate(
                 ["email"=>"required|email|exists:admins,email","password"=>"required|min:5|max:30"],
@@ -21,9 +22,8 @@ class AdminController extends Controller
                   return redirect()->route('admin.home')->with('success','Hello Admin - Your Credentails Is Correct');
         else
                   return redirect()->back()->with('fail','incorrect credentails Because This Email Exists in Users Table but does not correspond with entered password');//go to the same page [dashboard.user.register]
-
-
 }
+
 function logout(){
    $name=Auth::guard('admin')->user()->name;
     Auth::guard('admin')->logout();
