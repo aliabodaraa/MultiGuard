@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Psr7\Request;
@@ -24,7 +25,8 @@ Route::get('/index',[AdminController::class,'index'])->name('index');
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function(){
     Auth::routes();
 });
-
+Route::get('/photo_showing',[PhotoController::class,'index'])->name('photo_showing');
+Route::post('/store',[PhotoController::class,'store'])->name('store');
 // Route::get('/user/home',function(){
 //  return view('auth.login');
 // });
